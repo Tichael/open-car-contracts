@@ -1,0 +1,22 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/base:debian",
+    "features": {
+        "ghcr.io/mrsimonemms/devcontainers/buf:1": {},
+        "ghcr.io/devcontainers-extra/features/protoc:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "streetsidesoftware.code-spell-checker",
+                "vivaxy.vscode-conventional-commits",
+                "dotenv.dotenv-vscode",
+                "EditorConfig.EditorConfig",
+                "chneau.resource-monitor",
+                "Gruntfuggly.todo-tree",
+                "mk12.better-git-line-blame",
+                "sankethdev.vscode-proto"
+            ]
+        }
+    },
+    "remoteUser": "vscode"
+}

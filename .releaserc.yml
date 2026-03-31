@@ -1,0 +1,12 @@
+branches:
+  - main
+plugins:
+  - - "@semantic-release/commit-analyzer"
+    - releaseRules:
+        # This rule prevents an accidental v1.0.0 release.
+        # Any commit with "BREAKING CHANGE" will trigger a minor (0.x.0) bump, not a major (1.0.0) one.
+        # To remove once we have an official release.
+        - breaking: true
+          release: minor
+  - "@semantic-release/release-notes-generator"
+  - "@semantic-release/github"

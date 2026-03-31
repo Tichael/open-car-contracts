@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package opencar.cars.virtual_car.v1;
+
+// State represents a snapshot of the virtual car's current condition.
+message State {
+  // The total distance the car has traveled, in meters.
+  optional int32 odometer = 1;
+  // Whether the car is currently in motion.
+  optional bool is_driving = 2;
+  // The current speed of the car, in kilometers per hour (km/h).
+  optional int32 speed = 3;
+  // Whether the car doors are locked.
+  optional bool are_doors_locked = 4;
+}
+
+// Command represents an action to be performed by the virtual car.
+message Command {
+  // Action defines the specific commands that can be sent to the virtual car.
+  enum Action {
+    // The action is not specified. This is the default value and should be
+    // ignored.
+    ACTION_UNSPECIFIED = 0;
+    // A command to lock the car doors.
+    ACTION_LOCK_DOORS = 1;
+    // A command to unlock the car doors.
+    ACTION_UNLOCK_DOORS = 2;
+  }
+
+  // The specific action to be executed.
+  Action action = 1;
+}
