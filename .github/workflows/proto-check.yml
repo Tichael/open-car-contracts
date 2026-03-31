@@ -1,0 +1,21 @@
+name: Proto Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  check:
+    name: Lint, Format, and Breaking Changes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.2
+
+      - name: Buf Check
+        uses: bufbuild/buf-action@v1.4.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          push: false
