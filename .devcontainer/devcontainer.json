@@ -1,8 +1,7 @@
 {
     "image": "mcr.microsoft.com/devcontainers/base:debian",
     "features": {
-        "ghcr.io/mrsimonemms/devcontainers/buf:1": {},
-        "ghcr.io/devcontainers-extra/features/protoc:1": {}
+        "ghcr.io/mrsimonemms/devcontainers/buf:1": {}
     },
     "customizations": {
         "vscode": {
@@ -14,7 +13,7 @@
                 "chneau.resource-monitor",
                 "Gruntfuggly.todo-tree",
                 "mk12.better-git-line-blame",
-                "sankethdev.vscode-proto"
+                "bufbuild.vscode-buf"
             ]
         }
     },

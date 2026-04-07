@@ -16,12 +16,18 @@ message BasicState {
 
 // Advanced state that can only be shared over BLE.
 message AdvancedState {
+  // Represent the different gears possible in the car
   enum Gear {
+    // Unspecified gear.
     GEAR_UNSPECIFIED = 0;
-    PARK = 1;
-    REVERSE = 2;
-    NEUTRAL = 3;
-    DRIVE = 4;
+    // Parking gear.
+    GEAR_PARK = 1;
+    // Reverse gear.
+    GEAR_REVERSE = 2;
+    // Neutral gear.
+    GEAR_NEUTRAL = 3;
+    // Drive gear.
+    GEAR_DRIVE = 4;
   }
 
   // The current car speed, in kph.
@@ -33,16 +39,18 @@ message AdvancedState {
 
 // This contains a single basic command.
 message BasicCommand {
+  // The basic command.
   oneof action {
+    // A lock door command.
     DoorLockCommand door_lock = 1;
   }
 }
 
 // This contains a single advanced command.
-message AdvancedCommand {
-}
+message AdvancedCommand {}
 
 // Command to lock or unlock the car's doors.
 message DoorLockCommand {
+  // Indicate if the door should be locked or unlocked.
   bool lock = 1;
 }

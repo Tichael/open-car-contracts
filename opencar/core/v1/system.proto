@@ -3,23 +3,25 @@ package opencar.core.v1;
 
 // This holds the system specific state.
 message SystemState {
-    // The current firmware version string, based on the Github official tagged
-    // version or custom build.
-    string firmware_version = 1;
+  // The current firmware version string, based on the Github official tagged
+  // version or custom build.
+  string firmware_version = 1;
 
-    // The hardware type of the device (e.g. ESP32-S3)
-    string hardware_type = 2;
+  // The hardware type of the device (e.g. ESP32-S3)
+  string hardware_type = 2;
 
-    // The uptime of the device in seconds.
-    uint32 uptime_s = 3;
+  // The uptime of the device in seconds.
+  uint32 uptime_s = 3;
 
-    // The LTE signal strength in dBm.
-    int32 lte_rssi = 4;
+  // The LTE signal strength in dBm.
+  int32 lte_rssi = 4;
 }
 
 // This contains a single system command.
 message SystemCommand {
+  // The system command.
   oneof action {
+    // A restart command.
     RestartCommand restart_command = 1;
   }
 }

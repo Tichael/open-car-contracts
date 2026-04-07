@@ -1,7 +1,7 @@
 syntax = "proto3";
 package opencar.core.v1;
 
-import "system.proto";
+import "opencar/core/v1/system.proto";
 
 // AppToDevice is used for communication from the app to the device in the
 // vehicle. This is mostly for sending commands to the device.
@@ -13,9 +13,17 @@ message AppToDevice {
   // and decode vehicle specific data.
   uint32 platform_id = 2;
 
+  // The AppToDevice payload, mostly a type of command.
   oneof payload {
+    // A system command. This can only be sent from BLE.
     SystemCommand system_command = 3;
+
+    // A basic command bytes, encoded/decoded using the platform_id. This can be
+    // sent from any communication protocol.
     bytes basic_command_bytes = 4;
+
+    // An advanced command bytes, encoded/decoded using the platform_id. This
+    // can only be sent from BLE.
     bytes advanced_command_bytes = 5;
   }
 }
@@ -31,8 +39,13 @@ message DeviceToApp {
   // and decode vehicle specific data.
   uint32 platform_id = 2;
 
+  // The DeviceToApp payload. Can be a state update or a command response.
   oneof payload {
+    // A state update. It can contains different kinds of states.
     StateUpdate state_update = 3;
+
+    // A command response. It contains information about the command execution
+    // and potentially response data.
     CommandResponse command_response = 4;
   }
 }
@@ -67,8 +80,12 @@ message CommandResponse {
   // This field contains a human-readable error message when the command failed.
   string error_message = 3;
 
+  // The response data of the command.
   oneof response_data {
+    // Basic response data that can be sent on any communication protocol.
     bytes basic_response_data = 5;
+
+    // Advanced response data that can only be sent over BLE.
     bytes advanced_response_bytes = 6;
   }
 }
