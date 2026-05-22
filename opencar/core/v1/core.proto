@@ -56,6 +56,10 @@ message DeviceToApp {
     // on the same characteristic as state_update and command_response.
     // Only produced while CAN debug streaming is active (SetCanDebugEnabled).
     CanDebugUpdate can_debug_update = 5;
+
+    // A firmware-initiated system event (no associated inbound command).
+    // Sent over BLE only, e.g. to signal an intentional disconnect.
+    SystemEvent system_event = 6;
   }
 }
 
